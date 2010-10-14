@@ -1,0 +1,17 @@
+application: top-choice
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /(.*\.html)
+  static_files: static/\1
+  upload: static/(.*\.html)
+- url: /images
+  static_dir: static/images
+- url: /css
+  static_dir: static/css
+- url: /js
+  static_dir: static/js
+- url: .*
+  script: main.py

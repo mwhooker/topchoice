@@ -1,0 +1,53 @@
+/*
+.choice {
+    height: 100px;
+    width: 162px;
+    color: #81A594;
+}
+
+    .choice a {
+        margin-top: 25px;
+    }
+
+.choice {
+    background-color: #81A594;
+    height: 100px;
+}
+
+a:visited {
+    color: #37414A;
+}
+
+a {
+    text-decoration:none;
+}
+
+.header {
+    text-align: center;
+}
+    .header h1 {
+        color: #00628B;
+    }
+
+*/
+
+.container  {
+    height: 100%;
+    text-align: center;
+}
+
+.header {
+    text-align: center;
+    height: 20%;
+}
+
+.content {
+    height: 75%
+}
+    .content .choice {
+        font-size: 2em;
+    }
+
+.footer {
+    height: 5px;
+}

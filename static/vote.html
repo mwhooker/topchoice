@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Which is more Awesome</title>
+        <link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print">
+        <!--[if lt IE 8]>
+          <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+        <![endif]-->
+        <link rel="stylesheet" href="css/vote.css" type="text/css" media="screen">
+        <script src="http://www.google.com/jsapi?key=ABQIAAAAJdnPI3YsO1mfqh1mizwb4RS2wbVoyiuj6RuAnABW1f8KkZ_sPRTwqhSnbXn9Dh-wf0S7xl5Da6dfAg" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                    var vote = function(winner, loser){
+                        return function() {$.ajax({
+                                url: "vote",
+                                type: "POST",
+                                data: {'winner': winner, 'loser': loser},
+                                success: function(){
+                                    location.reload();
+                                }
+                            });
+                        };
+                    };
+                    $.ajax({
+                        url: "vote",
+                        dataType: 'json',
+                        success: function(dataObject, testStatus, req){
+                            $("#choice1").html(dataObject[0]);
+                            $("#choice1").click(vote(dataObject[0], dataObject[1]));
+                            $("#choice2").html(dataObject[1]);
+                            $("#choice2").click(vote(dataObject[1], dataObject[0]));
+                        }});
+                    });
+        </script>
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="span-24 header">
+                <h1><span class="large">Which is most awesome?</span></h1>
+            </div>
+
+            <div class="span-24 content">
+                <div class="span-8 push-4 choice">
+                    <a href="#" id='choice1'></a>
+                </div>
+                <div class="span-8 push-4 choice last">
+                    <a href="#" id='choice2'></a>
+                </div>
+            </div>
+
+            <div class="span-24 footer bottom">
+                Corpus from this <a href="http://www.reddit.com/r/offbeat/comments/dqtxn/a_friend_of_mine_postulates_that_if_you_stick_two/">chart</a>.
+        </div>
+
+    </body>
+</html>
